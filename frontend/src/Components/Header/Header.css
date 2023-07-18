@@ -1,0 +1,44 @@
+nav {
+    display: grid;
+}
+
+.headerLine {
+    display: grid;
+    width: 100%;
+    height: 100px;
+    position: relative;
+}
+
+.headerLine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: 50%;
+    left: 25%;
+    background: linear-gradient(90deg, #511f73, #60308c);
+}
+
+.navHeader {
+    color: #e6f2ff;
+    margin: 0;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: right;
+    color: #e6f2ff;
+}
+
+.navLinks span {
+    padding: .5em;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.navLinks span:hover {
+    cursor: pointer;
+    opacity: 50%;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
