@@ -27,9 +27,8 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (!data) {
-                    window.alert('wrong password or username')
+                    window.alert('Invalid password or username')
                 } else {
-                    console.log('setting cookies!!!')
                     document.cookie = `username=${data.username}; max-age=3600`
                     document.cookie = `name=${data.firstname} ${data.lastname}; max-age=3600`
                     navigate('/myinv')

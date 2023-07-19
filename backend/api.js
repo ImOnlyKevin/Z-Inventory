@@ -31,8 +31,11 @@ api.get('/user/:username', (req, res) => {
 api.post('/login', (req, res) => {
     knex('user').first().where({username: req.body.username})
         .then(result => {
-            if (result != [] && bcrypt.compareSync(req.body.password, result.password)) {
-                res.status(200).json(result)
+            console.log(result)
+            if (result != undefined) {
+                if (bcrypt.compareSync(req.body.password, result.password)) {
+                    res.status(200).json(result)
+                }
             } else {
                 res.status(400).send(false)
             }
