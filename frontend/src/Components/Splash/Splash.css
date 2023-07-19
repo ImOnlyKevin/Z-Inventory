@@ -1,0 +1,25 @@
+.splashContainer {
+    display: grid;
+    justify-content: center;
+    row-gap: 5em;
+}
+
+
+.btnContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btnContainer button {
+    width: 20%;
+    color: #e6f2ff;
+    height: 2em;
+    background-color: #9a99f2;
+    border: none;
+    border-radius: 5px;
+}
+
+.btnContainer button:hover {
+    cursor: pointer;
+    background-color: #9a99f250;
+}

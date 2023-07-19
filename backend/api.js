@@ -17,6 +17,17 @@ api.get('/', (req, res) => {
         })
 })
 
+api.get('/user/:username', (req, res) => {
+    knex('user').select('id', 'username', 'firstname', 'lastname').where({username: req.params.username})
+        .then(data => {
+            if (data.length > 0) {
+                res.status(200).json(data)
+            } else {
+                res.status(400).json(req.params.username, ' not found in DB.')
+            }
+        })
+})
+
 api.post('/login', (req, res) => {
     knex('user').first().where({username: req.body.username})
         .then(result => {
@@ -26,6 +37,18 @@ api.post('/login', (req, res) => {
                 res.status(400).send(false)
             }
         })
+})
+
+api.post('/signup', async (req, res) => {
+    console.log('user ', user)
+    if (user != undefined) {
+        res.status(400).json(false)
+    } else {
+        knex('user').insert([{username: req.body.username, password: pwHash(req.body.password), firstname: req.body.firstname, lastname: req.body.lastname}])
+            .then(result => {
+                res.status(200).json({username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname})
+            })
+    }
 })
 
 api.patch('/myinv/:operation', async (req, res) => {

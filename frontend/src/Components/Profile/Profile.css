@@ -1,0 +1,22 @@
+.profileContainer {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+.profileContainer div {
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 0.356);
+    width: 25%;
+    border-radius: 5px;
+    background-color: #60308c;
+}
+
+.profileContainer h4 {
+    margin: 1em 0 1em 0;
+}
+
+.profileContainer p {
+    margin: .5em;
+}
+

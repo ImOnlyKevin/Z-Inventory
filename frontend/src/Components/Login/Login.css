@@ -6,7 +6,7 @@
 
 .loginForm {
     /*           x   y   r   c */
-    box-shadow: .5em .5em 1em rgba(0, 0, 0, 0.356);
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
