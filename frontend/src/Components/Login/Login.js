@@ -8,7 +8,7 @@ const Login = () => {
 
     useEffect(() => {
         if (isLoggedIn()) {
-            navigate('/home')
+            navigate('/myinv')
         }
     }, [])
 
@@ -27,11 +27,12 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (!data) {
-                    window.alert('wrong password hoe')
+                    window.alert('wrong password or username')
                 } else {
+                    console.log('setting cookies!!!')
                     document.cookie = `username=${data.username}; max-age=3600`
                     document.cookie = `name=${data.firstname} ${data.lastname}; max-age=3600`
-                    navigate('/inventory')
+                    navigate('/myinv')
                 }
             })
     }
@@ -43,7 +44,7 @@ const Login = () => {
                 <h3>SIGN IN</h3>
                 <input type="text" name='username' placeholder="Username"/>
                 <input type="password" name='password' placeholder="Password"/>
-                <span>Signup</span>
+                <span onClick={() => navigate('/signup')}>Signup</span>
                 <button type='submit'>Login</button>
             </form>
         </div>

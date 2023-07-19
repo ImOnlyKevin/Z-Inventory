@@ -43,3 +43,7 @@ nav {
     opacity: 50%;
     border-top: 1px solid #511f73;
 }
+
+.active {
+    opacity: 50%;
+}

@@ -39,7 +39,7 @@ function createItemTable(knex) {
                 table.increments('id')
                 table.integer('userid')
                 table.string('item')
-                table.string('description')
+                table.text('description')
                 table.integer('quantity') 
         
                 table.foreign('userid').references('user.id')

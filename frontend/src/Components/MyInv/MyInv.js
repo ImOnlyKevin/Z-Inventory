@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
-import './Inventory.css'
+import './MyInv.css'
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../../helpers";
+import pencil from '../../svgs/pencil.svg'
+import trash from '../../svgs/trash.svg'
 
-const Inventory = () => {
+const MyInv = () => {
     const navigate = useNavigate()
     const username = document.cookie.split('; ').find(row => row.startsWith('username='))?.split('=')[1].split(' ')[0];
 
     const [ inventory, setInventory ] = useState()
+    const [ update, setUpdate ] = useState()
     const [ addToggle, setAddToggle ] = useState(false)
 
     useEffect(() => {
@@ -15,16 +18,16 @@ const Inventory = () => {
             navigate('/splash')
           }
         //fetch inventory
-        fetch(`http://localhost:3001/inventory/${username}`)
+        fetch(`http://localhost:3001/myinv/${username}`)
             .then(res => res.json())
             .then(data => {
                 setInventory(data)
             })
-    })
+    }, [update])
 
 
     const handleDecrement = (item) => {
-        fetch(`http://localhost:3001/inventory/dec`, {
+        fetch(`http://localhost:3001/myinv/dec`, {
             method: 'PATCH',
             body: JSON.stringify(item),
             headers: {
@@ -35,12 +38,13 @@ const Inventory = () => {
             .then(data => {
                 if (data) {
                     console.log(`Decremented ${item.item} by ${data}`)
+                    setUpdate(!update)
                 }
             })
     }
 
     const handleIncrement = (item) => {
-        fetch(`http://localhost:3001/inventory/inc`, {
+        fetch(`http://localhost:3001/myinv/inc`, {
             method: 'PATCH',
             body: JSON.stringify(item),
             headers: {
@@ -51,13 +55,14 @@ const Inventory = () => {
             .then(data => {
                 if (data) {
                     console.log(`Incremented ${item.item} by ${data}`)
+                    setUpdate(!update)
                 }
             })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3001/inventory`, {
+        fetch(`http://localhost:3001/myinv`, {
             method: 'POST',
             body: JSON.stringify({
                 item: e.target.item.value,
@@ -74,6 +79,7 @@ const Inventory = () => {
                 if (data) {
                     console.log(data)
                     setAddToggle(false)
+                    setUpdate(!update)
                 }
             })
     }
@@ -97,17 +103,37 @@ const Inventory = () => {
         }
     }
 
+    const handleDelete = (item) => {
+        fetch(`http://localhost:3001/myinv`, {
+            method: 'DELETE',
+            body: JSON.stringify(item),
+            headers: {
+                "Content-Type": "application/json" 
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    console.log(`Deleted ${data.name}`)
+                    setUpdate(!update)
+                }
+            })
+    }
+
+
     return (
         <div className="invContainer">
             {inventory?.map(item => {
                 return (
                     <div key={item.id} className="item">
-                        <p><strong>{item.item}</strong></p>
+                        <p onClick={() => {navigate('/myinv/item', {state: {item: item, edit: false}})}}><strong>{item.item}</strong></p>
                         {item.description.length > 100 ? <p>{item.description.substring(0,100)}...</p> : <p>{item.description}</p>}
                         <p>Quantity: {item.quantity}</p>
-                        <div>
+                        <div className="btnDiv">
                             <button onClick={() => {handleIncrement(item)}} className="itemBtn">+</button>
                             <button onClick={() => {handleDecrement(item)}} className="itemBtn">-</button>
+                            <button onClick={() => {navigate('/myinv/item', {state: {item: item, edit: true}})}} className="itemBtn"><img className="edit" src={pencil} alt="" /></button>
+                            <button onClick={() => {handleDelete(item)}} className="itemBtn"><img className="edit" src={trash} alt="" /></button>
                         </div>
                     </div>
                 )
@@ -119,4 +145,4 @@ const Inventory = () => {
     )
 }
 
-export default Inventory
+export default MyInv

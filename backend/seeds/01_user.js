@@ -1,3 +1,5 @@
+const { pwHash } = require('../helpers')
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
@@ -10,14 +12,14 @@ exports.seed = async function(knex) {
       firstname: 'Kevin',
       lastname: 'Cagle',
       username: 'kevin',
-      password: 'test'
+      password: pwHash('test')
     },
   
     {
       firstname: 'Rod',
       lastname: 'Cagle',
       username: 'rod',
-      password: 'test'
+      password: pwHash('test')
     }
   ])
 };
