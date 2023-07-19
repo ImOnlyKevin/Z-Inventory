@@ -1,0 +1,93 @@
+.invContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    margin: 0 3em 0 3em;
+    text-align: center;
+    align-items: center;
+}
+
+.item {
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 1em;
+    height: 80%;
+}
+
+.addItem {
+    display: flex;
+    justify-content: center;
+    align-content: bottom;
+    border-radius: 5px;
+    padding: 1em;
+    height: 80%;
+}
+
+.itemBtn {
+    background-color: #8B79D9;
+    border: none;
+    border-radius: 5px;
+    height: 2em;
+    width: 2em;
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+.itemBtn:hover {
+    cursor: pointer;
+    background-color: #8b79d950;
+}
+
+.addItemForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.addItemForm h3 {
+    margin:0 0 .1em 0;
+    scale: 75%;
+}
+
+.addItemForm div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addItemForm button {
+    color: #e6f2ff;
+    height: 2em;
+    background-color: #9a99f2;
+    border: none;
+    border-radius: 5px;
+    width: 48%;
+}
+
+.addItemForm button:hover {
+    cursor: pointer;
+    background-color: #9a99f250;
+}
+
+.addItemForm input {
+    color: #e6f2ff;
+    border: none;
+    border-radius: 5px;
+    height: 2em;
+    margin: 0 0 .2em 0;
+    background-color: rgb(40, 40, 40);
+}
+
+.toggleBtn {
+    background-color: #8B79D9;
+    align-self: center;
+    border: none;
+    border-radius: 5px;
+    height: 4em;
+    width: 4em;
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+.toggleBtn:hover {
+    cursor: pointer;
+    background-color: #8b79d950;
+}

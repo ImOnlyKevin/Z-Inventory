@@ -1,7 +1,6 @@
-.container {
+.loginContainer {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
     background: rgba(255, 255, 255, 0);
 }
 

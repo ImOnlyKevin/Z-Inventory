@@ -22,13 +22,14 @@ nav {
 .navHeader {
     color: #e6f2ff;
     margin: 0;
+    margin-bottom: .1em;
     text-align: center;
     padding-top: 1em;
 }
 
 .navLinks {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     color: #e6f2ff;
 }
 
@@ -40,5 +41,5 @@ nav {
 .navLinks span:hover {
     cursor: pointer;
     opacity: 50%;
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #511f73;
 }

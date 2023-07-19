@@ -30,14 +30,15 @@ const Login = () => {
                     window.alert('wrong password hoe')
                 } else {
                     document.cookie = `username=${data.username}; max-age=3600`
-                    navigate('/home')
+                    document.cookie = `name=${data.firstname} ${data.lastname}; max-age=3600`
+                    navigate('/inventory')
                 }
             })
     }
 
 
     return (
-        <div className="container">
+        <div className="loginContainer">
             <form onSubmit={handleSubmit} className="loginForm">
                 <h3>SIGN IN</h3>
                 <input type="text" name='username' placeholder="Username"/>
