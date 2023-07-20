@@ -13,7 +13,7 @@ exports.seed = async function(knex) {
       quantity: 5
     },
     {
-      userid: 1,
+      userid: 2,
       item: 'Armchair',
       description: 'Super comfortable. Well-used.',
       quantity: 3
@@ -25,7 +25,7 @@ exports.seed = async function(knex) {
       quantity: 1
     },
     {
-      userid: 1,
+      userid: 2,
       item: 'Toaster',
       description: 'Great for taking baths',
       quantity: 7
@@ -41,6 +41,36 @@ exports.seed = async function(knex) {
       item: 'iPhone',
       description: 'iPhone 12 Pro Maxx',
       quantity: 3
+    },
+    {
+      userid: 2,
+      item: 'Suitcase',
+      description: 'Sturdy handle, one broken wheel',
+      quantity: 1
+    },
+    {
+      userid: 1,
+      item: '3br 2br House',
+      description: "Bet you're surprised this is on here",
+      quantity: 99
+    },
+    {
+      userid: 2,
+      item: 'Apple Watch',
+      description: 'Late 2018 model',
+      quantity: 9
+    },
+    {
+      userid: 1,
+      item: 'Tesla Cybertruck',
+      description: "Never actually going to be in production",
+      quantity: 1
+    },
+    {
+      userid: 1,
+      item: 'T-Shirt',
+      description: 'Stolen off a mannequin',
+      quantity: 1
     }
   ]);
 };

@@ -16,10 +16,10 @@ exports.seed = async function(knex) {
     },
   
     {
-      firstname: 'Rod',
-      lastname: 'Cagle',
-      username: 'rod',
-      password: pwHash('test')
+      firstname: 'Galva',
+      lastname: 'Nize',
+      username: 'galvanize',
+      password: pwHash('thisappisthebest')
     }
   ])
 };
