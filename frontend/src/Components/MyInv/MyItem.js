@@ -15,19 +15,20 @@ const MyItem = () => {
 
     useEffect(() => {
         if (!isLoggedIn()) {
-            navigate('/splash')
-          }
-
-        if (!inventory) {
-            setInventory(item)
-            return
+            navigate('/')
+        } else {
+            if (!inventory) {
+                setInventory(item)
+                return
+            }
+            //fetch inventory
+            fetch(`http://localhost:3001/myinv/item/${item.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setInventory(data)
+                })
         }
-        //fetch inventory
-        fetch(`http://localhost:3001/myinv/item/${item.id}`)
-            .then(res => res.json())
-            .then(data => {
-                setInventory(data)
-            })
+
     }, [update]) 
 
     const handleDecrement = (item) => {
@@ -72,7 +73,8 @@ const MyItem = () => {
                 item: e.target.item.value,
                 description: e.target.description.value,
                 quantity: e.target.quantity.value,
-                username: username
+                username: username,
+                id: item.id
             }),
             headers: {
                 "Content-Type": "application/json" 
@@ -81,6 +83,7 @@ const MyItem = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
+                    setUpdate(!update)
                     navigate('/myinv')
                 }
             })
@@ -109,9 +112,9 @@ const MyItem = () => {
             return (
                 <div className="itemContainer">
                     <form onSubmit={handleSubmit} className="addItemForm">
-                        <h3>Add Item</h3>
+                        <h3>Edit Item</h3>
                         <input type="text" name='item' placeholder="item" defaultValue={inventory?.item} required/>
-                        <input type="text" name='description' placeholder="description" defaultValue={inventory?.description} required/>
+                        <textarea type="text" name='description' placeholder="description" defaultValue={inventory?.description} required/>
                         <input type="number" name='quantity' placeholder="quantity" defaultValue={inventory?.quantity} required/>
                         <div className="btnDiv">
                             <button type='submit'>Update Item</button>

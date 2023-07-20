@@ -2,6 +2,8 @@ import './Signup.css'
 import { useEffect } from 'react'
 import { isLoggedIn } from '../../helpers'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -18,6 +20,14 @@ const Signup = () => {
         let password = e.target.password.value
         let firstname = e.target.firstname.value
         let lastname = e.target.lastname.value
+
+        if (password.length < 10) {
+            toast.error('Password not long enough (10)', {
+                position: toast.POSITION.BOTTOM_CENTER
+            })
+            return
+        }
+
         // post username and password to server 
         fetch('http://localhost:3001/signup', {
             method: 'POST',
@@ -29,7 +39,9 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 if (!data) {
-                    window.alert('Username already taken')
+                    toast.error('Username already in use', {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
                 } else {
                     document.cookie = `username=${data.username}; max-age=3600`
                     document.cookie = `name=${data.firstname} ${data.lastname}; max-age=3600`
@@ -50,6 +62,7 @@ const Signup = () => {
                 <span onClick={() => navigate('/login')}>Login</span>
                 <button type='submit'>Create Account</button>
             </form>
+            <ToastContainer />
         </div>
     )
 }

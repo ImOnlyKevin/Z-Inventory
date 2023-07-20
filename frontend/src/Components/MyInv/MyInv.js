@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { isLoggedIn } from "../../helpers";
 import pencil from '../../svgs/pencil.svg'
 import trash from '../../svgs/trash.svg'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyInv = () => {
     const navigate = useNavigate()
@@ -15,7 +17,7 @@ const MyInv = () => {
 
     useEffect(() => {
         if (!isLoggedIn()) {
-            navigate('/splash')
+            navigate('/')
           }
         //fetch inventory
         fetch(`http://localhost:3001/myinv/${username}`)
@@ -90,7 +92,7 @@ const MyInv = () => {
                 <form onSubmit={handleSubmit} className="addItemForm">
                     <h3>Add Item</h3>
                     <input type="text" name='item' placeholder="item" required/>
-                    <input type="text" name='description' placeholder="description" required/>
+                    <textarea type="text" name='description' placeholder="description" required/>
                     <input type="number" name='quantity' placeholder="quantity" required/>
                     <div>
                         <button type='submit'>Add Item</button>

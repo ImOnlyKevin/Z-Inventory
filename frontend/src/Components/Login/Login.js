@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import './Login.css'
 import { useNavigate } from 'react-router-dom';
 import { isLoggedIn } from '../../helpers';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
     const navigate = useNavigate()
@@ -27,11 +30,13 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (!data) {
-                    window.alert('Invalid password or username')
+                    toast.error('Invalid username/password', {
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
                 } else {
                     document.cookie = `username=${data.username}; max-age=3600`
                     document.cookie = `name=${data.firstname} ${data.lastname}; max-age=3600`
-                    navigate('/myinv')
+                    navigate('/myinv');
                 }
             })
     }
@@ -39,6 +44,7 @@ const Login = () => {
 
     return (
         <div className="loginContainer">
+            <ToastContainer/>
             <form onSubmit={handleSubmit} className="loginForm">
                 <h3>SIGN IN</h3>
                 <input type="text" name='username' placeholder="Username"/>

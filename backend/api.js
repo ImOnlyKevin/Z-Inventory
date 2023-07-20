@@ -43,8 +43,9 @@ api.post('/login', (req, res) => {
 })
 
 api.post('/signup', async (req, res) => {
-    console.log('user ', user)
-    if (user != undefined) {
+    let user = await knex('user').select('username').where({username: req.body.username})
+    console.log(user)
+    if (user.length > 0) {
         res.status(400).json(false)
     } else {
         knex('user').insert([{username: req.body.username, password: pwHash(req.body.password), firstname: req.body.firstname, lastname: req.body.lastname}])
@@ -95,6 +96,7 @@ api.post('/myinv', async (req, res) => {
 })
 
 api.put('/myinv/item', async (req, res) => {
+    await knex('item').where({id: req.body.id}).delete()
     let query = await knex('user').select('id').where({username: req.body.username})
     let userid = query[0].id
     knex('item').insert({

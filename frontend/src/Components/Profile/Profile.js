@@ -1,23 +1,29 @@
 import { useState, useEffect } from "react"
 import './Profile.css'
+import { useNavigate } from "react-router-dom"
+import { isLoggedIn } from "../../helpers"
 
 const Profile = () => {
+    const navigate = useNavigate()
 
     const [user, setUser] = useState()
 
     useEffect(() => {
-        let username = document.cookie.split('; ').find(row => row.startsWith('username='))?.split('=')[1]
-        console.log(username)
-        fetch(`http://localhost:3001/user/${username}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.length !== 1) {
-                    window.alert(data)
-                }
-                else {
-                    setUser(data[0])
-                }
-            })
+        let username = isLoggedIn()
+        if (!username) {
+            navigate('/')
+        } else {
+            fetch(`http://localhost:3001/user/${username}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.length !== 1) {
+                        window.alert(data)
+                    }
+                    else {
+                        setUser(data[0])
+                    }
+                })
+        }
     }, [])
 
 
