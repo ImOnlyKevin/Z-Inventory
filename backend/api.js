@@ -31,10 +31,11 @@ api.get('/user/:username', (req, res) => {
 api.post('/login', (req, res) => {
     knex('user').first().where({username: req.body.username})
         .then(result => {
-            console.log(result)
             if (result != undefined) {
                 if (bcrypt.compareSync(req.body.password, result.password)) {
                     res.status(200).json(result)
+                } else {
+                    res.status(400).send(false)
                 }
             } else {
                 res.status(400).send(false)
@@ -44,7 +45,6 @@ api.post('/login', (req, res) => {
 
 api.post('/signup', async (req, res) => {
     let user = await knex('user').select('username').where({username: req.body.username})
-    console.log(user)
     if (user.length > 0) {
         res.status(400).json(false)
     } else {
@@ -63,7 +63,6 @@ api.patch('/myinv/:operation', async (req, res) => {
             knex('item').where({id: req.body.id}).del()
                 .then(result => res.status(200).json(`Quantity reached 0. Deleted ${req.body.item}`))
         } else {
-            console.log(quantity.quantity)
             knex('item').where({id: req.body.id}).update('quantity', quantity[0].quantity-1)
                 .then(result => {
                     res.status(200).json(result)
@@ -71,7 +70,6 @@ api.patch('/myinv/:operation', async (req, res) => {
         }
     }
     else if (req.params.operation == 'inc'){
-        console.log(quantity.quantity)
         knex('item').where({id: req.body.id}).update('quantity', quantity[0].quantity+1)
             .then(result => {
                 if (result == 0) {
@@ -140,7 +138,6 @@ api.get('/myinv/item/:id', (req, res) => {
     knex('item').first().where({'id': req.params.id})
         .then(result => {
             if (result != []) {
-                console.log('result: ', result)
                 res.status(200).json(result)
             } else {
                 res.status(400).send(false)
@@ -151,7 +148,6 @@ api.get('/myinv/item/:id', (req, res) => {
 api.delete('/myinv', (req, res) => {
     knex('item').where({id: req.body.id}).del()
         .then(result => {
-            console.log(result)
             res.status(200).json(req.body)
         })
 })

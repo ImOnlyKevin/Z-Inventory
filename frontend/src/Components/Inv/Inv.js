@@ -17,9 +17,9 @@ const Inv = () => {
 
     return (
         <div className="invContainer">
-            {inventory?.map(item => {
+            {inventory?.map((item, index) => {
                 return (
-                    <div key={item.id} className="item">
+                    <div key={index} className="item">
                         <p onClick={() => {navigate('/inv/item', {state: {item: item}})}}><strong>{item.item}</strong></p>
                         {item.description.length > 100 ? <p>{item.description.substring(0,100)}...</p> : <p>{item.description}</p>}
                         <p>Quantity: {item.quantity}</p>

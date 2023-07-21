@@ -31,7 +31,8 @@ const Login = () => {
             .then(data => {
                 if (!data) {
                     toast.error('Invalid username/password', {
-                        position: toast.POSITION.BOTTOM_CENTER
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        className: 'toast-error'
                     })
                 } else {
                     document.cookie = `username=${data.username}; max-age=3600`
@@ -47,8 +48,8 @@ const Login = () => {
             <ToastContainer/>
             <form onSubmit={handleSubmit} className="loginForm">
                 <h3>SIGN IN</h3>
-                <input type="text" name='username' placeholder="Username"/>
-                <input type="password" name='password' placeholder="Password"/>
+                <input type="text" name='username' placeholder="Username" required/>
+                <input type="password" name='password' placeholder="Password" required/>
                 <span onClick={() => navigate('/signup')}>Signup</span>
                 <button type='submit'>Login</button>
             </form>

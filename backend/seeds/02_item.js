@@ -6,71 +6,66 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('item').del()
   await knex('item').insert([
-    {
-      userid: 2,
-      item: 'Chapstick',
-      description: 'Wax-based balm for dry lips',
-      quantity: 5
-    },
-    {
-      userid: 2,
-      item: 'Armchair',
-      description: 'Super comfortable. Well-used.',
-      quantity: 3
-    },
-    {
-      userid: 1,
-      item: 'Laptop',
-      description: '2018 MacBook Pro',
-      quantity: 1
-    },
-    {
-      userid: 2,
-      item: 'Toaster',
-      description: 'Great for taking baths',
-      quantity: 7
-    },
-    {
-      userid: 1,
-      item: 'Rope',
-      description: "Perfect for hangin' around",
-      quantity: 11
-    },
-    {
-      userid: 1,
-      item: 'iPhone',
-      description: 'iPhone 12 Pro Maxx',
-      quantity: 3
-    },
-    {
-      userid: 2,
-      item: 'Suitcase',
-      description: 'Sturdy handle, one broken wheel',
-      quantity: 1
-    },
-    {
-      userid: 1,
-      item: '3br 2br House',
-      description: "Bet you're surprised this is on here",
-      quantity: 99
-    },
-    {
-      userid: 2,
-      item: 'Apple Watch',
-      description: 'Late 2018 model',
-      quantity: 9
-    },
-    {
-      userid: 1,
-      item: 'Tesla Cybertruck',
-      description: "Never actually going to be in production",
-      quantity: 1
-    },
-    {
-      userid: 1,
-      item: 'T-Shirt',
-      description: 'Stolen off a mannequin',
-      quantity: 1
-    }
+    {userid: 2, item: 'Chapstick', description: 'Wax-based balm for dry lips', quantity: 5},
+    {userid: 2, item: 'Armchair', description: 'Super comfortable. Well-used.', quantity: 3},
+    {userid: 1, item: 'Laptop', description: '2018 MacBook Pro', quantity: 1},
+    {userid: 2, item: 'Toaster', description: 'Great for taking baths', quantity: 7},
+    {userid: 1, item: 'Rope', description: "Perfect for hangin' around", quantity: 11},
+    {userid: 1, item: 'iPhone', description: 'iPhone 12 Pro Maxx', quantity: 3},
+    {userid: 2, item: 'Suitcase', description: 'Sturdy handle, one broken wheel', quantity: 1},
+    {userid: 1, item: '3br 2br House', description: "Bet you're surprised this is on here", quantity: 99},
+    {userid: 2, item: 'Apple Watch', description: 'Late 2018 model', quantity: 9},
+    {userid: 1, item: 'Tesla Cybertruck', description: "Never actually going to be in production", quantity: 1},
+    {userid: 1, item: 'T-Shirt', description: 'Stolen off a mannequin', quantity: 1},
+    {userid: 1, item: 'Apple', description: 'Crunchy and sweet fruit', quantity: 20},
+    {userid: 2, item: 'Orange Juice', description: 'Refreshing citrus drink', quantity: 10},
+    {userid: 1, item: 'Toothpaste', description: 'Mint flavored oral hygiene product', quantity: 2},
+    {userid: 2, item: 'Shampoo', description: 'Hair cleaning product', quantity: 5},
+    {userid: 1, item: 'Pasta', description: 'Italian wheat-based food', quantity: 50},
+    {userid: 2, item: 'Chicken', description: 'Raw meat for cooking', quantity: 6},
+    {userid: 1, item: 'Milk', description: 'Cold dairy drink', quantity: 3},
+    {userid: 2, item: 'Ice Cream', description: 'Sweet frozen dessert', quantity: 10},
+    {userid: 1, item: 'Coffee', description: 'Caffeinated hot beverage', quantity: 40},
+    {userid: 2, item: 'Bread', description: 'Staple food made from wheat', quantity: 7},
+    {userid: 1, item: 'Eggs', description: 'High-protein breakfast food', quantity: 12},
+    {userid: 2, item: 'Socks', description: 'Footwear to keep feet warm', quantity: 20},
+    {userid: 1, item: 'Notebook', description: 'Blank paper for writing or drawing', quantity: 15},
+    {userid: 2, item: 'Pencils', description: 'Tool for writing or drawing', quantity: 50},
+    {userid: 1, item: 'Laptop', description: 'Portable computer', quantity: 1},
+    {userid: 2, item: 'Rice', description: 'Staple grain for cooking', quantity: 100},
+    {userid: 1, item: 'Steak', description: 'High-quality beef cut', quantity: 4},
+    {userid: 2, item: 'Tea', description: 'Hot or cold beverage made from leaves', quantity: 30},
+    {userid: 1, item: 'Beer', description: 'Alcoholic beverage made from barley', quantity: 24},
+    {userid: 2, item: 'Cheese', description: 'Dairy product available in many varieties', quantity: 5},
+    {userid: 1, item: 'Wine', description: 'Alcoholic beverage made from grapes', quantity: 12},
+    {userid: 2, item: 'Grapes', description: 'Small sweet fruits', quantity: 2},
+    {userid: 1, item: 'Carrots', description: 'Crunchy and nutritious vegetable', quantity: 7},
+    {userid: 2, item: 'Spinach', description: 'Leafy green vegetable', quantity: 3},
+    {userid: 1, item: 'Potatoes', description: 'Versatile and starchy root vegetable', quantity: 10},
+    {userid: 2, item: 'Fish', description: 'Seafood for cooking', quantity: 5},
+    {userid: 1, item: 'Watch', description: 'Wrist-worn device for telling time', quantity: 1},
+    {userid: 2, item: 'Bag', description: 'Accessory for carrying items', quantity: 10},
+    {userid: 1, item: 'Soap', description: 'Cleaning product for hygiene', quantity: 6},
+    {userid: 2, item: 'Dog Food', description: 'Nutritious meal for dogs', quantity: 20},
+    {userid: 1, item: 'Ham', description: 'Cured pork product', quantity: 3},
+    {userid: 2, item: 'Water Bottle', description: 'Container for holding water', quantity: 10},
+    {userid: 1, item: 'Chocolate', description: 'Sweet confectionery', quantity: 15},
+    {userid: 2, item: 'Yogurt', description: 'Probiotic dairy product', quantity: 7},
+    {userid: 1, item: 'Tuna', description: 'Canned fish product', quantity: 10},
+    {userid: 2, item: 'Toothbrush', description: 'Tool for dental hygiene', quantity: 4},
+    {userid: 1, item: 'Phone Charger', description: 'Device for charging mobile phones', quantity: 2},
+    {userid: 2, item: 'Garlic', description: 'Pungent cooking ingredient', quantity: 10},
+    {userid: 1, item: 'Olive Oil', description: 'Healthy cooking oil', quantity: 2},
+    {userid: 2, item: 'Tomatoes', description: 'Juicy red fruits used in cooking', quantity: 15},
+    {userid: 1, item: 'Sneakers', description: 'Comfortable shoes for casual wear or sports', quantity: 2},
+    {userid: 2, item: 'Umbrella', description: 'Protective gear for rain', quantity: 3},
+    {userid: 1, item: 'Wrench', description: 'Tool for tightening or loosening bolts', quantity: 1},
+    {userid: 2, item: 'Batteries', description: 'Power source for electronic devices', quantity: 24},
+    {userid: 1, item: 'Printer Ink', description: 'Liquid for printing documents or images', quantity: 4},
+    {userid: 2, item: 'Cereal', description: 'Quick and easy breakfast food', quantity: 5},
+    {userid: 1, item: 'Cooking Pan', description: 'Kitchen utensil for cooking food', quantity: 1},
+    {userid: 2, item: 'Bicycle', description: 'Two-wheeled transportation device', quantity: 1},
+    {userid: 1, item: 'Frying Oil', description: 'Oil suitable for high-temperature cooking', quantity: 3},
+    {userid: 2, item: 'Bed Sheets', description: 'Fabric covers for a bed', quantity: 2}
   ]);
 };

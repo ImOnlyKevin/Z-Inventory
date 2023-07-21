@@ -27,6 +27,10 @@ nav {
     padding-top: 1em;
 }
 
+.navHeader:hover {
+    cursor: pointer;
+}
+
 .navLinks {
     display: flex;
     justify-content: center;

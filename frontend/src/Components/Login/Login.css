@@ -62,3 +62,8 @@
     height: 2em;
     background-color: rgb(40, 40, 40);
 }
+
+.toast-error {
+    color: #e6f2ff;
+    background-color: #60308c;
+}

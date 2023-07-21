@@ -79,7 +79,6 @@ const MyInv = () => {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    console.log(data)
                     setAddToggle(false)
                     setUpdate(!update)
                 }

@@ -18,12 +18,22 @@ const Signup = () => {
         e.preventDefault()
         let username = e.target.username.value
         let password = e.target.password.value
+        let passwordCheck = e.target.passwordCheck.value
         let firstname = e.target.firstname.value
         let lastname = e.target.lastname.value
 
         if (password.length < 10) {
             toast.error('Password not long enough (10)', {
-                position: toast.POSITION.BOTTOM_CENTER
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-error'
+            })
+            return
+        }
+
+        if (password !== passwordCheck) {
+            toast.error('Password must match', {
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-error'
             })
             return
         }
@@ -55,10 +65,11 @@ const Signup = () => {
         <div className="loginContainer">
             <form onSubmit={handleSubmit} className="loginForm">
                 <h3>SIGN UP</h3>
-                <input type="text" name='firstname' placeholder="First Name"/>
-                <input type="text" name='lastname' placeholder="Last Name"/>
-                <input type="text" name='username' placeholder="Username"/>
-                <input type="password" name='password' placeholder="Password"/>
+                <input type="text" name='firstname' placeholder="First Name" required/>
+                <input type="text" name='lastname' placeholder="Last Name" required/>
+                <input type="text" name='username' placeholder="Username" required/>
+                <input type="password" name='password' placeholder="Password" required/>
+                <input type="password" name='passwordCheck' placeholder="Confirm Password" required/>
                 <span onClick={() => navigate('/login')}>Login</span>
                 <button type='submit'>Create Account</button>
             </form>
